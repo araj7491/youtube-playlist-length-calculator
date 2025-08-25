@@ -4,24 +4,31 @@ A simple web app to calculate the total duration of all videos in a YouTube play
 
 ## Setup
 
-1. Install dependencies:
+1. Create and activate a virtual environment:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Get a YouTube Data API key:
+3. Get a YouTube Data API key:
    - Go to [Google Cloud Console](https://console.cloud.google.com/)
    - Create a new project or select existing one
    - Enable YouTube Data API v3
    - Create credentials (API Key)
    - Replace `YOUR_YOUTUBE_API_KEY_HERE` in `app.py` with your actual API key
 
-3. Run the application:
+4. Run the application:
 ```bash
+source venv/bin/activate  # Activate venv if not already active
 python app.py
 ```
 
-4. Open your browser and go to `http://localhost:5000`
+5. Open your browser and go to `http://localhost:5000`
 
 ## Usage
 
