@@ -12,7 +12,7 @@ A web application that calculates the total duration of all videos in a YouTube 
 
 ## Demo
 
-[Live Demo on Vercel](https://your-app-url.vercel.app) *(Update with your actual URL)*
+[Live Demo on Vercel](https://youtube-playlist-length-calculato-git-12965d-araj7491s-projects.vercel.app/)
 
 ## Local Development
 
@@ -53,30 +53,7 @@ python app.py
 
 6. **Open your browser and go to `http://localhost:5000`**
 
-## Deployment on Vercel
-
-### Quick Deploy
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/youtube-playlist-length-calculator)
-
-### Manual Deployment
-
-1. **Install Vercel CLI**
-```bash
-npm i -g vercel
-```
-
-2. **Deploy to Vercel**
-```bash
-vercel --prod
-```
-
-3. **Set environment variable in Vercel dashboard**
-   - Go to your project settings in Vercel
-   - Add `YOUTUBE_API_KEY` environment variable
-   - Redeploy if necessary
-
-### Getting YouTube API Key
+## Getting YouTube API Key
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a new project or select an existing one
@@ -98,9 +75,9 @@ youtube-playlist-length-calculator/
 │   └── style.css         # CSS styling
 ├── templates/
 │   └── index.html        # HTML template
-├── app.py                # Flask app (works locally & on Vercel)
+├── app.py                # Flask application
 ├── requirements.txt      # Python dependencies
-├── vercel.json          # Vercel deployment configuration
+├── vercel.json          # Deployment configuration
 ├── .env.example         # Environment variables template
 ├── .gitignore          # Git ignore rules
 └── README.md           # Project documentation
@@ -111,7 +88,7 @@ youtube-playlist-length-calculator/
 - **Backend**: Python, Flask
 - **Frontend**: HTML5, CSS3, JavaScript
 - **API**: YouTube Data API v3
-- **Deployment**: Vercel Serverless Functions
+- **Deployment**: Cloud Platform Ready
 - **Environment**: Virtual Environment (venv)
 
 ## Contributing
