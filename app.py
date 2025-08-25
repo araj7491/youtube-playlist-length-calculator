@@ -3,6 +3,7 @@ import re
 import requests
 from datetime import timedelta
 import isodate
+import os
 
 app = Flask(__name__)
 
@@ -137,13 +138,12 @@ def calculate():
     if not playlist_id:
         return render_template('index.html', error="Invalid YouTube playlist URL")
     
-    # You need to get a YouTube Data API key from Google Cloud Console
-    # For demo purposes, we'll use a placeholder
-    api_key = "AIzaSyBbZyRU8eIUEeHyVcsdBR_vBiz-dNfBAlA"
+    # Get API key from environment variable for security
+    api_key = os.environ.get('YOUTUBE_API_KEY')
     
-    if api_key == "YOUR_YOUTUBE_API_KEY_HERE":
+    if not api_key:
         return render_template('index.html', 
-                             error="Please add your YouTube Data API key to app.py")
+                             error="YouTube API key not configured. Please set YOUTUBE_API_KEY environment variable.")
     
     result, error = get_playlist_duration(playlist_id, api_key)
     
@@ -152,8 +152,7 @@ def calculate():
     
     return render_template('index.html', result=result)
 
-# Export the Flask app for Vercel
-app = app
+# This same file works for both local development and Vercel deployment
 
 if __name__ == '__main__':
     app.run(debug=True)
