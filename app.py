@@ -152,9 +152,7 @@ def calculate():
     
     return render_template('index.html', result=result)
 
-# Vercel entry point
-def handler(event, context):
-    return app
+# Vercel entry point - Flask app is automatically detected
 
 if __name__ == '__main__':
     app.run(debug=True)
