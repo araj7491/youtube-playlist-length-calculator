@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session, flash
 import re
 import requests
 from datetime import timedelta
@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
+app.secret_key = 'your-secret-key-change-this-in-production'
 
 def extract_playlist_id(url):
     """Extract playlist ID from YouTube URL"""
@@ -129,32 +130,42 @@ def get_playlist_duration(playlist_id, api_key):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    result = session.pop('result', None)
+    error = session.pop('error', None)
+    return render_template('index.html', result=result, error=error)
+
+@app.route('/calculate', methods=['GET'])
+def calculate_get():
+    return redirect('/')
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
     playlist_url = request.form.get('playlist_url')
     
     if not playlist_url:
-        return render_template('index.html', error="Please enter a playlist URL")
+        session['error'] = "Please enter a playlist URL"
+        return redirect('/')
     
     playlist_id = extract_playlist_id(playlist_url)
     if not playlist_id:
-        return render_template('index.html', error="Invalid YouTube playlist URL")
+        session['error'] = "Invalid YouTube playlist URL"
+        return redirect('/')
     
     # Get API key from environment variable for security
     api_key = os.environ.get('YOUTUBE_API_KEY')
     
     if not api_key:
-        return render_template('index.html', 
-                             error="YouTube API key not configured. Please set YOUTUBE_API_KEY environment variable.")
+        session['error'] = "YouTube API key not configured. Please set YOUTUBE_API_KEY environment variable."
+        return redirect('/')
     
     result, error = get_playlist_duration(playlist_id, api_key)
     
     if error:
-        return render_template('index.html', error=error)
+        session['error'] = error
+        return redirect('/')
     
-    return render_template('index.html', result=result)
+    session['result'] = result
+    return redirect('/')
 
 # This same file works for both local development and Vercel deployment
 
