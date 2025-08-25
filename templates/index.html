@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Playlist Duration Calculator</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="youtube-logo">
+                <div class="youtube-icon"></div>
+                <div>
+                    <h1>YouTube Playlist Calculator</h1>
+                    <p class="subtitle">Calculate total duration of any YouTube playlist</p>
+                </div>
+            </div>
+        </div>
+        <form id="playlist-form" action="/calculate" method="POST">
+            <div class="form-group">
+                <label for="playlist_url">Playlist URL:</label>
+                <input type="url" id="playlist_url" name="playlist_url" 
+                       placeholder="https://www.youtube.com/playlist?list=..." required>
+                <button type="submit">Calculate Total Duration</button>
+            </div>
+        </form>
+        
+        <div id="loading" class="loading hidden">
+            <p>Calculating playlist duration...</p>
+        </div>
+        
+        {% if result %}
+        <div class="result">
+            <h2>Results</h2>
+            <div class="playlist-name">
+                <strong>{{ result.playlist_name }}</strong>
+            </div>
+            <p><strong>Total Videos:</strong> {{ result.video_count }}</p>
+            <p><strong>Total Duration:</strong> {{ result.total_duration }}</p>
+        </div>
+        {% endif %}
+        
+        {% if error %}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('playlist-form').addEventListener('submit', function() {
+            document.getElementById('loading').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
