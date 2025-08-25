@@ -152,5 +152,9 @@ def calculate():
     
     return render_template('index.html', result=result)
 
+# Vercel entry point
+def handler(event, context):
+    return app
+
 if __name__ == '__main__':
     app.run(debug=True)
