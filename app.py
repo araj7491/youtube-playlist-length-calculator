@@ -4,6 +4,10 @@ import requests
 from datetime import timedelta
 import isodate
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 
