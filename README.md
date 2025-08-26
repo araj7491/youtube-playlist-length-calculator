@@ -4,11 +4,11 @@ A web application that calculates the total duration of all videos in a YouTube 
 
 ## Features
 
-- 🎥 Calculate total duration of YouTube playlists
-- 📊 Display video count and formatted duration
-- 🔒 Secure API key handling via environment variables
-- 🚀 Ready for deployment on Vercel
-- 💻 Responsive web interface
+• Calculate total duration of YouTube playlists
+• Display video count and formatted duration
+• Secure API key handling via environment variables
+• Ready for deployment on Vercel
+• Responsive web interface
 
 ## Demo
 
@@ -85,11 +85,11 @@ youtube-playlist-length-calculator/
 
 ## Technologies Used
 
-- **Backend**: Python, Flask
-- **Frontend**: HTML5, CSS3, JavaScript
-- **API**: YouTube Data API v3
-- **Deployment**: Cloud Platform Ready
-- **Environment**: Virtual Environment (venv)
+• **Backend**: Python, Flask
+• **Frontend**: HTML5, CSS3, JavaScript
+• **API**: YouTube Data API v3
+• **Deployment**: Cloud Platform Ready
+• **Environment**: Virtual Environment (venv)
 
 ## Contributing
 
