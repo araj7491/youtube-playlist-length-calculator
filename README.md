@@ -12,7 +12,7 @@ A web application that calculates the total duration of all videos in a YouTube 
 
 ## Demo
 
-[Live Demo on Vercel](https://youtube-playlist-length-calculato-git-12965d-araj7491s-projects.vercel.app/)
+[Live Demo on Vercel](https://youtube-playlist-length-calculator-blond.vercel.app/)
 
 ## Local Development
 
